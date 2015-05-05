@@ -10,6 +10,12 @@ class ContactDatabase
     contacts = CSV.read(@filename)
   end
 
+  def formatted_list(offset=0)
+    read.each do |line|
+      puts "#{line[0]}: #{line[1]} (#{line[2]})"
+    end
+  end
+
   def write(contact)
     CSV.open(@filename,'a') do |file|
       # binding.pry

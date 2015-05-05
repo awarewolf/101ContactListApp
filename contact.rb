@@ -15,7 +15,7 @@ class Contact
   end
 
   def to_a
-    [@name,@email]
+    [@email,@name]
   end
 
   ## Class Methods
@@ -32,9 +32,7 @@ class Contact
 
     def all
       # TODO: Return the list of contacts, as is
-      ContactDatabase.new.read.each do |line|
-        puts line
-      end
+      ContactDatabase.new.formatted_list
     end
 
     def show(id)
