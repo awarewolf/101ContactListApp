@@ -11,10 +11,20 @@ class ContactDatabase
   end
 
   def write(contact)
-    CSV.open(@filename,'w') do |file|
-      file << contact.to_a
+    CSV.open(@filename,'a') do |file|
+      # binding.pry
+      file << contact.to_a.unshift(uid)
     end
   end
 
-end
+  def uid
+    id = []
+    unless read.nil?
+      read.each { |contact| id << contact[0] }
+    else
+      id << ['1']
+    end
+    new_id = (id.max.to_i+1).to_s
+  end
 
+end

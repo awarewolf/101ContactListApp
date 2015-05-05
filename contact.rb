@@ -1,3 +1,5 @@
+require 'pp'
+
 class Contact
 
   attr_accessor :name, :email
@@ -30,6 +32,9 @@ class Contact
 
     def all
       # TODO: Return the list of contacts, as is
+      ContactDatabase.new.read.each do |line|
+        puts line
+      end
     end
 
     def show(id)
